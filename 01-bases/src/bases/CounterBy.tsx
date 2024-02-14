@@ -1,5 +1,4 @@
-import { constants } from 'perf_hooks';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface Props {
     initialValue?: number;
