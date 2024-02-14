@@ -19,7 +19,7 @@ export const useCounter = ({ initialValue = 0 }: Props) => {
         clicks: 0
     });
 
-    const elementToAnimate = useRef<any>(null);
+    const elementToAnimate = useRef<HTMLHeadingElement>(null);
     const tl = useRef( gsap.timeline() );
 
     const handleClick = (value: number) => {
