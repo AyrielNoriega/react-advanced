@@ -6,7 +6,7 @@ import '../styles/styles.css';
 
 export const RegisterPage = () => {
 
-    const { name, email, password1, password2, onChange } = useForm({
+    const { name, email, password1, password2, onChange,onResetForm, isValidEmail } = useForm({
         name: '',
         email: '',
         password1: '',
@@ -29,14 +29,20 @@ export const RegisterPage = () => {
                     placeholder="Name"
                     type="text"
                     value={ name }
+                    className={ `${ name.trim().length <= 0 && 'has-error' }` }
                 />
+                { name.trim().length <= 0 && <span>Este campo es necesario</span> }
+
                 <input
                     name='email'
                     onChange={ onChange }
                     placeholder="Email"
                     type="email"
                     value={ email }
+                    className={ `${ !isValidEmail(email) && 'has-error' }` }
                 />
+                { !isValidEmail(email) && <span>Este campo es necesario</span> }
+
                 <input
                     name='password1'
                     onChange={ onChange }
@@ -53,6 +59,7 @@ export const RegisterPage = () => {
                 />
 
                 <button type="submit">Create</button>
+                <button type="button" onClick={ onResetForm }>Reset</button>
             </form>
         </div>
     );
