@@ -35,7 +35,7 @@ export const FormikBasicPage = () => {
         return errors;
     }
 
-    const { handleChange, values, handleSubmit } = useFormik({
+    const { handleChange, values, handleSubmit, errors, touched, handleBlur } = useFormik({
         initialValues: {
             firstName: '',
             lastName: '',
@@ -58,8 +58,9 @@ export const FormikBasicPage = () => {
                     name='firstName'
                     onChange={ handleChange }
                     value={ values.firstName }
+                    onBlur={ handleBlur }
                 />
-                <span>first name is required</span>
+                { touched.firstName && errors.firstName &&  <span> { errors.firstName } </span> }
 
                 <label htmlFor="lastName">Last Name</label>
                 <input
@@ -67,8 +68,9 @@ export const FormikBasicPage = () => {
                     name='lastName'
                     onChange={ handleChange }
                     value={ values.lastName }
+                    onBlur={ handleBlur }
                 />
-                <span>last name is required</span>
+                { touched.lastName && errors.lastName &&  <span> { errors.lastName } </span> }
 
                 <label htmlFor="email">Email</label>
                 <input
@@ -76,8 +78,9 @@ export const FormikBasicPage = () => {
                     name='email'
                     onChange={ handleChange }
                     value={ values.email }
+                    onBlur={ handleBlur }
                 />
-                <span>email is required</span>
+                { touched.email && errors.email &&  <span> { errors.email } </span> }
 
                 <button type="submit">Submit</button>
             </form>
